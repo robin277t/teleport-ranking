@@ -1,5 +1,5 @@
-import logo from './frontend/css/logo.svg';
-import './frontend/css/Controller.css';
+import logo from './css/logo.svg';
+import './css/Controller.css';
 
 function Controller() {
   return (

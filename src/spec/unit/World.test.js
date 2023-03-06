@@ -1,4 +1,4 @@
-import World from "../../backend/World";
+import World from "../../classes/World";
 require("jest-fetch-mock").enableMocks();
 
 describe("Block 1: World class", () => {
@@ -49,16 +49,16 @@ describe("Block 1: World class", () => {
     expect(testWorldInstance.continents[0]).not.toHaveProperty("self");
   });
 
-  it("test5 - edit href string into usable object field content: continent_id", async () => {
+  it("test5 - edit href string into usable object field content: continentId", async () => {
     mockApiContinent._links["continent:item"][0] = {
       href: "https://api.teleport.org/api/continents/geonames:EU/",
       name: "Europe",
     };
     fetch.mockResponseOnce(JSON.stringify(mockApiContinent));
     await testWorldInstance.fetchContinents();
-    expect(testWorldInstance.continents[0]).toHaveProperty("continent_id");
-    expect(testWorldInstance.continents[0].continent_id.length).toEqual(11);
-    expect(testWorldInstance.continents[0].continent_id[0]).toEqual("g");
+    expect(testWorldInstance.continents[0]).toHaveProperty("continentId");
+    expect(testWorldInstance.continents[0].continentId.length).toEqual(11);
+    expect(testWorldInstance.continents[0].continentId[0]).toEqual("g");
   });
 
   it("test6 - pull through name field and add 1 continent as correctly formatted object added to array", async () => {
@@ -69,7 +69,7 @@ describe("Block 1: World class", () => {
     fetch.mockResponseOnce(JSON.stringify(mockApiContinent));
     await testWorldInstance.fetchContinents();
     expect(testWorldInstance.continents).toEqual([
-      { continent_id: "geonames:EU", name: "Europe" },
+      { continentId: "geonames:EU", name: "Europe" },
     ]);
   });
 

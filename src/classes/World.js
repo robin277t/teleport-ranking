@@ -17,7 +17,7 @@ class World {
   #formatContinentsList(data) {
     data._links["continent:item"].forEach((continent) => {
       const newContinent = {
-        continent_id: continent.href.slice(-12, -1),
+        continentId: continent.href.slice(-12, -1),
         name: continent.name,
       };
       this.continents.push(newContinent);
