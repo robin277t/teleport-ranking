@@ -7,22 +7,22 @@ class World {
     try {
       const response = await fetch("https://api.teleport.org/api/continents/");
       const data = await response.json();
-      const data2 = await data._links["continent:item"]
-
-      data2.forEach(continent => {
-        const newObj = { continent_id: continent.href.slice(-12,-1), name: continent.name}
-        this.continents.push(newObj)
-      })
-
+      this.#formatContinentsList(data);
     } catch (err) {
-      console.log(err)
-      return null
+      console.log(err);
+      return null;
     }
   }
 
-  // #formatContinentsList() {}
-
-  // #addToContinentsList() {}
+  #formatContinentsList(data) {
+    data._links["continent:item"].forEach((continent) => {
+      const newContinent = {
+        continent_id: continent.href.slice(-12, -1),
+        name: continent.name,
+      };
+      this.continents.push(newContinent);
+    });
+  }
 }
 
 module.exports = World;

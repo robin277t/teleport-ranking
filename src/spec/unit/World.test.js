@@ -61,7 +61,7 @@ describe("Block 1: World class", () => {
     expect(testWorldInstance.continents[0].continent_id[0]).toEqual("g");
   });
 
-  it("test6 - pull through name field and add 1 continent correctly formatted object added to array", async () => {
+  it("test6 - pull through name field and add 1 continent as correctly formatted object added to array", async () => {
     mockApiContinent._links["continent:item"][0] = {
       href: "https://api.teleport.org/api/continents/geonames:EU/",
       name: "Europe",
