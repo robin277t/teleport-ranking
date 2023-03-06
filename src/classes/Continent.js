@@ -1,16 +1,21 @@
 class Continent {
-  constructor(continent_id) {
-    this.continent_id = continent_id;
+  constructor(continentId, dataParams) {
+    this.continentId = continentId;
     this.allUrbanAreas = [];
+    //this.urbanAreasDetail = []
   }
 
   async fetchUrbanAreas() {
     try {
       const response = await fetch(
-        `https://api.teleport.org/api/continents/${this.continent_id}/urban_areas/`
+        `https://api.teleport.org/api/continents/${this.continentId}/urban_areas/`
       );
       const data = await response.json();
       this.#formatAllUrbanAreasListAsURLs(data);
+      //instantiate new class here?
+      //const urbanDetailsInstance = new UrbanAreas(this.continentId, this.allUrbanAreas, this.dataParams)
+      //urbanDetailsInstance.runFunction()
+      //this.urbanAreasDetail = urbanDetailsInstance.topUrbanAreas
     } catch (err) {
       console.log(err);
       return null;
