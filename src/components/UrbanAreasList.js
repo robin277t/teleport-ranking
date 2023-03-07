@@ -3,7 +3,7 @@ import '../styles.css'
 
 const UrbanAreasList = ({ topUrbanAreas }) => {
 
-  //note that the regex expression on line 15 removes html tags from the string
+  //note that the regex expression on line 18 removes html tags from the raw string
 
   return (
     <div>
