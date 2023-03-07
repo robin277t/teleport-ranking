@@ -31,6 +31,8 @@
 
 - The diagram below shows the abstraction of all fetch api and data handling/formatting in 3x classes, and with react frontend components for presenting the data, along with a react 'controller' component that runs the web app:
 
+![AppDesign](https://user-images.githubusercontent.com/112484204/223373553-856390b9-1882-4375-9944-b62d263b779f.png)
+
 ### Tools Used:
 
 - Primarily JavaScript (ES6). Use React library for frontend and controller.
