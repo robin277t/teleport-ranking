@@ -15,7 +15,7 @@ class World {
   }
 
   #formatContinentsList(data) {
-    data._links["continent:item"].forEach((continent) => {
+    data._links["continent:items"].forEach((continent) => {
       const newContinent = {
         continentId: continent.href.slice(-12, -1),
         name: continent.name,
@@ -25,4 +25,4 @@ class World {
   }
 }
 
-module.exports = World;
+export default World;

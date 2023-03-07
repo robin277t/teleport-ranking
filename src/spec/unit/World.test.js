@@ -9,7 +9,7 @@ describe("Block 1: World class", () => {
     testWorldInstance = new World();
     mockApiContinent = {
       _links: {
-        "continent:item": [{ href: "longurlstring", name: "gondwana" }],
+        "continent:items": [{ href: "longurlstring", name: "gondwana" }],
         curies: [
           { href: "longurlstring", name: "randomlongstring", templated: true },
         ],
@@ -50,7 +50,7 @@ describe("Block 1: World class", () => {
   });
 
   it("test5 - edit href string into usable object field content: continentId", async () => {
-    mockApiContinent._links["continent:item"][0] = {
+    mockApiContinent._links["continent:items"][0] = {
       href: "https://api.teleport.org/api/continents/geonames:EU/",
       name: "Europe",
     };
@@ -62,7 +62,7 @@ describe("Block 1: World class", () => {
   });
 
   it("test6 - pull through name field and add 1 continent as correctly formatted object added to array", async () => {
-    mockApiContinent._links["continent:item"][0] = {
+    mockApiContinent._links["continent:items"][0] = {
       href: "https://api.teleport.org/api/continents/geonames:EU/",
       name: "Europe",
     };
@@ -74,15 +74,15 @@ describe("Block 1: World class", () => {
   });
 
   it("test7 - add multiple continent objects to array", async () => {
-    mockApiContinent._links["continent:item"][0] = {
+    mockApiContinent._links["continent:items"][0] = {
       href: "https://api.teleport.org/api/continents/geonames:EU/",
       name: "Europe",
     };
-    mockApiContinent._links["continent:item"][1] = {
+    mockApiContinent._links["continent:items"][1] = {
       href: "https://api.teleport.org/api/continents/geonames:AS/",
       name: "Asia",
     };
-    mockApiContinent._links["continent:item"][2] = {
+    mockApiContinent._links["continent:items"][2] = {
       href: "https://api.teleport.org/api/continents/geonames:NA/",
       name: "North America",
     };

@@ -1,8 +1,7 @@
 class Continent {
-  constructor(continentId, dataParams) {
+  constructor(continentId) {
     this.continentId = continentId;
     this.allUrbanAreas = [];
-    //this.urbanAreasDetail = []
   }
 
   async fetchUrbanAreas() {
@@ -12,10 +11,6 @@ class Continent {
       );
       const data = await response.json();
       this.#formatAllUrbanAreasListAsURLs(data);
-      //instantiate new class here?
-      //const urbanDetailsInstance = new UrbanAreas(this.continentId, this.allUrbanAreas, this.dataParams)
-      //urbanDetailsInstance.runFunction()
-      //this.urbanAreasDetail = urbanDetailsInstance.topUrbanAreas
     } catch (err) {
       console.log(err);
       return null;
@@ -32,4 +27,4 @@ class Continent {
   }
 }
 
-module.exports = Continent;
+export default Continent;

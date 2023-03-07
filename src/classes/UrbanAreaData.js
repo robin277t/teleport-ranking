@@ -18,9 +18,14 @@ class UrbanAreaData {
   }
 
   async #fetchOneUrbanAreaDetail(url) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   }
 
   #formatAllUrbanAreaDetails(data) {
@@ -41,8 +46,8 @@ class UrbanAreaData {
   }
 
   #filterTopUrbanAreas(fullList) {
-    this.topUrbanAreas = fullList.slice(0,this.maxAreasToDisplay)
+    this.topUrbanAreas = fullList.slice(0, this.maxAreasToDisplay);
   }
 }
 
-module.exports = UrbanAreaData;
+export default UrbanAreaData;

@@ -1,25 +1,66 @@
-import logo from './css/logo.svg';
-import './css/Controller.css';
+import React, { useState, useEffect } from "react";
+import World from "./classes/World";
+import Continent from "./classes/Continent";
+import UrbanAreaData from "./classes/UrbanAreaData";
+import ContinentsDropdown from "./components/ContinentsDropdown";
 
-function Controller() {
+const Controller = () => {
+  const [continents, setContinents] = useState([]);
+  const [selectedContinent, setSelectedContinent] = useState(null);
+  const [topUrbanAreas, setTopUrbanAreas] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  //Here is where you can change how many top urban areas to display:
+  const maxDisplay = 5;
+
+  useEffect(() => {
+    const world = new World();
+    world.fetchContinents().then(() => {
+      setContinents(world.continents);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (selectedContinent) {
+      setIsLoading(true);
+      const continent = new Continent(selectedContinent);
+      continent.fetchUrbanAreas().then(() => {
+        const urbanAreaData = new UrbanAreaData(
+          selectedContinent,
+          continent.allUrbanAreas,
+          maxDisplay
+        );
+        urbanAreaData.fetchAllUrbanAreaDetails().then(() => {
+          setTopUrbanAreas(urbanAreaData.topUrbanAreas);
+          setIsLoading(false);
+        });
+      });
+    } else {
+      setTopUrbanAreas([]);
+    }
+  }, [selectedContinent, maxDisplay]);
+
+  const handleContinentSelect = (continent) => {
+    setSelectedContinent(continent);
+    setIsLoading(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hi! Welcome to Teleport Ranking, here to help you choose a new location.</h1>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <ContinentsDropdown
+          continents={continents}
+          maxDisplay={maxDisplay}
+          onContinentSelect={handleContinentSelect}
+          selectedContinent={selectedContinent}
+          topUrbanAreas={topUrbanAreas}
+        />
+      )}
     </div>
   );
-}
+};
 
 export default Controller;
