@@ -3,6 +3,7 @@ import World from "./classes/World";
 import Continent from "./classes/Continent";
 import UrbanAreaData from "./classes/UrbanAreaData";
 import ContinentsDropdown from "./components/ContinentsDropdown";
+import "./styles.css";
 
 const Controller = () => {
   const [continents, setContinents] = useState([]);

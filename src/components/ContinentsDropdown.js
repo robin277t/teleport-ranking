@@ -1,5 +1,6 @@
 import React from "react";
 import UrbanAreasList from "./UrbanAreasList";
+import "../styles.css";
 
 const ContinentsDropdown = ({
   continents,

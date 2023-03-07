@@ -1,0 +1,29 @@
+body {
+  font-family: Calibri, sans-serif;
+  background-color: #F4EEDE;
+  color: #333639;
+}
+
+select {
+  font-size: 2em;
+  background-color: #F4EEDE;
+  color: #333639;
+  border: 4px solid #D69538;
+}
+
+option {
+  background-color: #F4EEDE;
+  color: #333639;
+}
+
+li {
+  margin-bottom: 1em;
+}
+
+li h4 {
+  margin-bottom: 0.2em;
+}
+
+li p {
+  margin: 0;
+}
