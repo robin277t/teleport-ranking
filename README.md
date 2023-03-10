@@ -60,8 +60,15 @@
 ### v2-corrections branch
 - Encapsulation improvement: All class properties in the 3x classes (World, Continent, UrbanAreaData) are now made private, and getter methods added where needed.
 - React Controller component updated to read getter methods rather than class properties.
+
 - Move api fetch action from client-side to server-side, by creating an express-node backend.
-- Move 'controller' to server-side, and update react components to just fetch data once(per continent) from the server.
+
+- Import classes as typescript files.
+- Move 'controller' to server-side
+- Update react components to just fetch data once(per continent) from the server.
+- Update scripts to run server and frontend simultaneously
+- Update test script to include coverage.
+- Add/fix any tests to achieve 100% coverage.
 
 
 
