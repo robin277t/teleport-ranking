@@ -1,8 +1,8 @@
 class UrbanAreaData {
-  #continentId
-  #maxAreasToDisplay
-  #urbanAreaURLsList
-  #topUrbanAreas
+  #continentId;
+  #maxAreasToDisplay;
+  #urbanAreaURLsList;
+  #topUrbanAreas;
 
   constructor(continentId, urbanAreaURLsList, maxAreasToDisplay) {
     this.#continentId = continentId;
@@ -12,11 +12,11 @@ class UrbanAreaData {
   }
 
   getContinentId() {
-    return this.#continentId
+    return this.#continentId;
   }
 
   getTopUrbanAreas() {
-    return this.#topUrbanAreas
+    return this.#topUrbanAreas;
   }
 
   async fetchAllUrbanAreaDetails() {

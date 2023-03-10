@@ -83,15 +83,15 @@ describe("Block 3: UrbanAreaData class", () => {
       })
     );
     await testUrbanAreaDataInstance.fetchAllUrbanAreaDetails();
-    expect(testUrbanAreaDataInstance.getTopUrbanAreas()[0].teleport_city_score).toBe(
-      10.4
-    );
-    expect(testUrbanAreaDataInstance.getTopUrbanAreas()[1].teleport_city_score).toBe(
-      8.8
-    );
-    expect(testUrbanAreaDataInstance.getTopUrbanAreas()[2].teleport_city_score).toBe(
-      7.5
-    );
+    expect(
+      testUrbanAreaDataInstance.getTopUrbanAreas()[0].teleport_city_score
+    ).toBe(10.4);
+    expect(
+      testUrbanAreaDataInstance.getTopUrbanAreas()[1].teleport_city_score
+    ).toBe(8.8);
+    expect(
+      testUrbanAreaDataInstance.getTopUrbanAreas()[2].teleport_city_score
+    ).toBe(7.5);
   });
 
   it("test5 - only X urban areas added to new array based on maxDisplay param", async () => {
