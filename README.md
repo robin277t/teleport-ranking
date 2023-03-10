@@ -55,6 +55,10 @@
 - I would add integration tests (although they weren't part of the requirement).
 - I would put more CSS in to styling in.
 
+## CHANGE LOG
+
+### v2-corrections branch
+- Encapsulation improvement: All class properties in the 3x classes (World, Continent, UrbanAreaData) are now made private, and getter methods added where needed.
 
 
 

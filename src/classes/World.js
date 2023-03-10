@@ -1,6 +1,12 @@
 class World {
+  #continents
+
   constructor() {
-    this.continents = [];
+    this.#continents = [];
+  }
+
+  getContinents() {
+    return this.#continents
   }
 
   async fetchContinents() {
@@ -20,9 +26,10 @@ class World {
         continentId: continent.href.slice(-12, -1),
         name: continent.name,
       };
-      this.continents.push(newContinent);
+      this.#continents.push(newContinent);
     });
   }
+
 }
 
 export default World;

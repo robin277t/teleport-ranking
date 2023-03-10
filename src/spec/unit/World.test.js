@@ -22,9 +22,9 @@ describe("Block 1: World class", () => {
 
   it("test1 - fetchAPI response is added to array", async () => {
     fetch.mockResponseOnce(JSON.stringify(mockApiContinent));
-    expect(testWorldInstance.continents.length).toBe(0);
+    expect(testWorldInstance.getContinents.length).toBe(0);
     await testWorldInstance.fetchContinents();
-    expect(testWorldInstance.continents.length).toBe(1);
+    expect(testWorldInstance.getContinents().length).toBe(1);
   });
 
   it("test2 - returns error message if api call fails", async () => {
@@ -39,14 +39,14 @@ describe("Block 1: World class", () => {
   it("test3 - filter api response to clear out un-needed data 1, '_links' header with count", async () => {
     fetch.mockResponseOnce(JSON.stringify(mockApiContinent));
     await testWorldInstance.fetchContinents();
-    expect(testWorldInstance.continents[0]).not.toHaveProperty("_links");
+    expect(testWorldInstance.getContinents()[0]).not.toHaveProperty("_links");
   });
 
   it("test4 - filter api response to clear out un-needed data 2;'curies' & 'self'", async () => {
     fetch.mockResponseOnce(JSON.stringify(mockApiContinent));
     await testWorldInstance.fetchContinents();
-    expect(testWorldInstance.continents[0]).not.toHaveProperty("curies");
-    expect(testWorldInstance.continents[0]).not.toHaveProperty("self");
+    expect(testWorldInstance.getContinents()[0]).not.toHaveProperty("curies");
+    expect(testWorldInstance.getContinents()[0]).not.toHaveProperty("self");
   });
 
   it("test5 - edit href string into usable object field content: continentId", async () => {
@@ -56,9 +56,9 @@ describe("Block 1: World class", () => {
     };
     fetch.mockResponseOnce(JSON.stringify(mockApiContinent));
     await testWorldInstance.fetchContinents();
-    expect(testWorldInstance.continents[0]).toHaveProperty("continentId");
-    expect(testWorldInstance.continents[0].continentId.length).toEqual(11);
-    expect(testWorldInstance.continents[0].continentId[0]).toEqual("g");
+    expect(testWorldInstance.getContinents()[0]).toHaveProperty("continentId");
+    expect(testWorldInstance.getContinents()[0].continentId.length).toEqual(11);
+    expect(testWorldInstance.getContinents()[0].continentId[0]).toEqual("g");
   });
 
   it("test6 - pull through name field and add 1 continent as correctly formatted object added to array", async () => {
@@ -68,7 +68,7 @@ describe("Block 1: World class", () => {
     };
     fetch.mockResponseOnce(JSON.stringify(mockApiContinent));
     await testWorldInstance.fetchContinents();
-    expect(testWorldInstance.continents).toEqual([
+    expect(testWorldInstance.getContinents()).toEqual([
       { continentId: "geonames:EU", name: "Europe" },
     ]);
   });
@@ -88,8 +88,8 @@ describe("Block 1: World class", () => {
     };
     fetch.mockResponseOnce(JSON.stringify(mockApiContinent));
     await testWorldInstance.fetchContinents();
-    expect(testWorldInstance.continents.length).toBe(3)
-    expect(testWorldInstance.continents[2].name).toEqual('North America')
+    expect(testWorldInstance.getContinents().length).toBe(3)
+    expect(testWorldInstance.getContinents()[2].name).toEqual('North America')
   });
 });
 

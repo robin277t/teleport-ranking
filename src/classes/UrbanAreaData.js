@@ -1,20 +1,33 @@
 class UrbanAreaData {
-  constructor(continent_id, urbanAreaURLsList, maxAreasToDisplay) {
-    this.continent_id = continent_id;
-    this.maxAreasToDisplay = maxAreasToDisplay;
-    this.urbanAreaURLsList = urbanAreaURLsList;
-    this.topUrbanAreas = [];
+  #continentId
+  #maxAreasToDisplay
+  #urbanAreaURLsList
+  #topUrbanAreas
+
+  constructor(continentId, urbanAreaURLsList, maxAreasToDisplay) {
+    this.#continentId = continentId;
+    this.#maxAreasToDisplay = maxAreasToDisplay;
+    this.#urbanAreaURLsList = urbanAreaURLsList;
+    this.#topUrbanAreas = [];
+  }
+
+  getContinentId() {
+    return this.#continentId
+  }
+
+  getTopUrbanAreas() {
+    return this.#topUrbanAreas
   }
 
   async fetchAllUrbanAreaDetails() {
     const responses = [];
-    for (const url of this.urbanAreaURLsList) {
+    for (const url of this.#urbanAreaURLsList) {
       const response = await this.#fetchOneUrbanAreaDetail(url);
       responses.push(response);
     }
     this.#formatAllUrbanAreaDetails(responses);
-    this.#orderTopUrbanAreas(this.topUrbanAreas);
-    this.#filterTopUrbanAreas(this.topUrbanAreas);
+    this.#orderTopUrbanAreas(this.#topUrbanAreas);
+    this.#filterTopUrbanAreas(this.#topUrbanAreas);
   }
 
   async #fetchOneUrbanAreaDetail(url) {
@@ -35,18 +48,18 @@ class UrbanAreaData {
         teleport_city_score: urbanArea.teleport_city_score,
         summary: urbanArea.summary,
       };
-      this.topUrbanAreas.push(newUrbanAreaDetail);
+      this.#topUrbanAreas.push(newUrbanAreaDetail);
     });
   }
 
   #orderTopUrbanAreas(unsortedList) {
-    this.topUrbanAreas = unsortedList.sort(
+    this.#topUrbanAreas = unsortedList.sort(
       (a, b) => b.teleport_city_score - a.teleport_city_score
     );
   }
 
   #filterTopUrbanAreas(fullList) {
-    this.topUrbanAreas = fullList.slice(0, this.maxAreasToDisplay);
+    this.#topUrbanAreas = fullList.slice(0, this.#maxAreasToDisplay);
   }
 }
 
