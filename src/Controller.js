@@ -28,11 +28,11 @@ const Controller = () => {
       continent.fetchUrbanAreas().then(() => {
         const urbanAreaData = new UrbanAreaData(
           selectedContinent,
-          continent.getAllUrbanAreas,
+          continent.getAllUrbanAreas(),
           maxDisplay
         );
         urbanAreaData.fetchAllUrbanAreaDetails().then(() => {
-          setTopUrbanAreas(urbanAreaData.getTopUrbanAreas);
+          setTopUrbanAreas(urbanAreaData.getTopUrbanAreas());
           setIsLoading(false);
         });
       });
