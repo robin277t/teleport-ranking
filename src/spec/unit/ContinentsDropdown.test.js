@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import ContinentsDropdown from "../../components/ContinentsDropdown";
 
-xdescribe("Block5: ContinentsDropdown component", () => {
+describe("Block5: ContinentsDropdown component", () => {
   const continents = [
     {
       continentId: "geonames:AF",

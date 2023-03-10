@@ -17,7 +17,7 @@ const Controller = () => {
   useEffect(() => {
     const world = new World();
     world.fetchContinents().then(() => {
-      setContinents(world.continents);
+      setContinents(world.getContinents());
     });
   }, []);
 
@@ -28,11 +28,11 @@ const Controller = () => {
       continent.fetchUrbanAreas().then(() => {
         const urbanAreaData = new UrbanAreaData(
           selectedContinent,
-          continent.allUrbanAreas,
+          continent.getAllUrbanAreas,
           maxDisplay
         );
         urbanAreaData.fetchAllUrbanAreaDetails().then(() => {
-          setTopUrbanAreas(urbanAreaData.topUrbanAreas);
+          setTopUrbanAreas(urbanAreaData.getTopUrbanAreas);
           setIsLoading(false);
         });
       });

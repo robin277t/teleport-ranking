@@ -59,6 +59,7 @@
 
 ### v2-corrections branch
 - Encapsulation improvement: All class properties in the 3x classes (World, Continent, UrbanAreaData) are now made private, and getter methods added where needed.
+- React Controller component updated to read getter methods rather than class properties.
 
 
 

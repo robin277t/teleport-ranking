@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import UrbanAreasList from "../../components/UrbanAreasList";
 
-xdescribe("Block6: UrbanAreasList component", () => {
+describe("Block6: UrbanAreasList component", () => {
   const topUrbanAreas = [
     {
       name: "New York",
