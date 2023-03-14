@@ -1,10 +1,10 @@
 class Continent {
   #continentId;
-  #allUrbanAreas;
+  #allUrbanAreaURLs;
 
   constructor(continentId) {
     this.#continentId = continentId;
-    this.#allUrbanAreas = [];
+    this.#allUrbanAreaURLs = [];
   }
 
   getContinentId() {
@@ -12,7 +12,7 @@ class Continent {
   }
 
   getAllUrbanAreas() {
-    return this.#allUrbanAreas;
+    return this.#allUrbanAreaURLs;
   }
 
   async fetchUrbanAreas() {
@@ -33,7 +33,7 @@ class Continent {
   #formatAllUrbanAreasListAsURLs(data) {
     data._links["ua:items"].forEach((urbanArea) => {
       const newUrbanArea = urbanArea.href.split("/")[5];
-      this.#allUrbanAreas.push(
+      this.#allUrbanAreaURLs.push(
         `https://api.teleport.org/api/urban_areas/${newUrbanArea}/scores/`
       );
     });
