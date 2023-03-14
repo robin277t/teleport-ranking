@@ -5,7 +5,6 @@ import "../styles.css";
 const ContinentsDropdown = ({
   continents,
   onContinentSelect,
-  maxDisplay,
   selectedContinent,
   topUrbanAreas,
 }) => {

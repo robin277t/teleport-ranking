@@ -43,13 +43,15 @@ describe("Block 3: UrbanAreaData class", () => {
 
   it("test2 - urban area details data added to topUrbanArea array", async () => {
     await testUrbanAreaDataInstance.fetchAllUrbanAreaDetails();
-    expect(testUrbanAreaDataInstance.topUrbanAreas.length).toBe(3);
+    expect(testUrbanAreaDataInstance.getTopUrbanAreas().length).toBe(3);
   });
 
   it("test3 - api responses are formatted to remove excess data not given by params", async () => {
     const expectedFields = ["name", "teleport_city_score", "summary"];
     await testUrbanAreaDataInstance.fetchAllUrbanAreaDetails();
-    const actualFields = Object.keys(testUrbanAreaDataInstance.topUrbanAreas[0]);
+    const actualFields = Object.keys(
+      testUrbanAreaDataInstance.getTopUrbanAreas()[0]
+    );
     expect(actualFields).toEqual(expectedFields);
   });
 
@@ -81,15 +83,15 @@ describe("Block 3: UrbanAreaData class", () => {
       })
     );
     await testUrbanAreaDataInstance.fetchAllUrbanAreaDetails();
-    expect(testUrbanAreaDataInstance.topUrbanAreas[0].teleport_city_score).toBe(
-      10.4
-    );
-    expect(testUrbanAreaDataInstance.topUrbanAreas[1].teleport_city_score).toBe(
-      8.8
-    );
-    expect(testUrbanAreaDataInstance.topUrbanAreas[2].teleport_city_score).toBe(
-      7.5
-    );
+    expect(
+      testUrbanAreaDataInstance.getTopUrbanAreas()[0].teleport_city_score
+    ).toBe(10.4);
+    expect(
+      testUrbanAreaDataInstance.getTopUrbanAreas()[1].teleport_city_score
+    ).toBe(8.8);
+    expect(
+      testUrbanAreaDataInstance.getTopUrbanAreas()[2].teleport_city_score
+    ).toBe(7.5);
   });
 
   it("test5 - only X urban areas added to new array based on maxDisplay param", async () => {
@@ -169,6 +171,11 @@ describe("Block 3: UrbanAreaData class", () => {
       })
     );
     await testUrbanAreasInstance2.fetchAllUrbanAreaDetails();
-    expect(testUrbanAreasInstance2.topUrbanAreas.length).toBe(5);
+    expect(testUrbanAreasInstance2.getTopUrbanAreas().length).toBe(5);
   });
+
+  it("test6- getContinentId getter function works", () => {
+    expect(testUrbanAreaDataInstance.getContinentId()).toEqual("geonames:AF");
+  });
+
 });
