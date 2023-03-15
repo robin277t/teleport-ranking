@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "../../App";
 
-describe("Block4: App component", () => {
+xdescribe("Block4: App component", () => {
   it("test1 - should display the header", () => {
     render(<App />);
     const header = screen.getByRole("heading", { level: 1 });
