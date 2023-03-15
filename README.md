@@ -34,6 +34,7 @@
 
 - The diagram below shows the abstraction of all fetch api and data handling/formatting in 3x classes, and with react frontend components for presenting the data, along with a 'controller' express file that runs the web app:
 
+![AppDesign_v3](https://user-images.githubusercontent.com/112484204/225310760-33c7306c-62f6-4dfe-8f46-9484414c83e8.png)
 
 ### Tools Used:
 
@@ -69,7 +70,7 @@
 - Move api fetch action from client-side to server-side, by creating an express-node backend (new repo)
 - Move 'controller' to server-side
 - As only 2 routes with 3 or 4 functions required, took the decision to make a single controller file to handle server and all routes rather than a more extensive file tree.
-- Update react components to just fetch data once from the server on initial load, and then once each time a continent is selected.
+- Update React components to just fetch data once from the server on initial load, and then once each time a continent is selected.
 - Update server class files so as not to continue adding to data lists on repeated GET requests
 - Use of arrays in controller file to act as sort of semi-persistent data, meaning repeated and unneccesary fetch api calls were not made to teleport.org.
 - Server will background load all continent data starting when first GET request comes in (on react app load), but contains functionality to priority load a specific continent's data on its own if the whole load hasn't finished before that continent is selected.
