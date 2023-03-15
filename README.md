@@ -32,7 +32,7 @@
 
 ## Design
 
-- The diagram below shows the abstraction of all fetch api and data handling/formatting in 3x classes, and with react frontend components for presenting the data, along with a 'controller' express file that runs the web app:
+- The diagram below shows the abstraction of all fetch api and data handling/formatting in 3x classes, with React components to run the web app and present the data, along with an express server & a 'controller' file:
 
 ![AppDesign_v3](https://user-images.githubusercontent.com/112484204/225310760-33c7306c-62f6-4dfe-8f46-9484414c83e8.png)
 
