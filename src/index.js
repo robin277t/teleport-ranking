@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Controller from "./Controller";
+import App from "./App";
 import reportWebVitals from "./spec/reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Controller />
+    <App />
   </React.StrictMode>
 );
 

@@ -21,21 +21,23 @@
 - Unzip this folder and use terminal to navigate to it
 - Check you are using version of node 18.0+
 - Run command 'npm install'
+
+- **Got to repo: 'teleport-ranking-api' and follow instructions on readme there to start backend server.**
+
 - Run command 'npm start' (app may open automatically in browser tab, if not open browser and navigate to localhost:3000)
 - Run command 'npm test' (to run test suite)
-- Web app will appear, UI is self explanatory. Note no persistence in program, each reload is a fresh start.
+- Web app will appear, UI is self explanator.
 - Tested and run on Windows and Linux environments (assumed to also work fine on MacOS). Other operating systems/mobile unknown.
 
 
 ## Design
 
-- The diagram below shows the abstraction of all fetch api and data handling/formatting in 3x classes, and with react frontend components for presenting the data, along with a react 'controller' component that runs the web app:
+- The diagram below shows the abstraction of all fetch api and data handling/formatting in 3x classes, and with react frontend components for presenting the data, along with a 'controller' express file that runs the web app:
 
-![AppDesign](https://user-images.githubusercontent.com/112484204/223373553-856390b9-1882-4375-9944-b62d263b779f.png)
 
 ### Tools Used:
 
-- Primarily JavaScript (ES6). Use React library for frontend and controller.
+- React library for frontend (expressJS and nodeJS for backend server in other repo)
 - Unit Tested using Jest
 - Drawio for diagramming
 - Git version control
@@ -44,31 +46,34 @@
 ### Approach
 
 - Focussed first on TDD process to create data handling classes, with lots of testing using fetch-jest-mock
-- Secondarily built react app to display data and run, thirdly was to style the UI.
-- Idea was to use OOP principles to create a data app, and then combine with the functional utilities of react app and hooks for a more sophisticated and updateable frontend, although I have run the risk of over-complicating such a simple application here.
-- Decision taken not to load all data at startup, but rather to use loading screen to share our waiting time a little between each continent selection
+- Secondarily built React app to display data, along with a minimal styling of the UI.
+- Thirdly was implementing the data handling classes as a basic Express server and using fetch api to get data from there into react components.
 
 ### Future improvements/Challenges
 
-- I had some challenges testing the controller component in react, there is some functionality untested, and also a warning that things weren't wrapped in act(...), which I tried to resolve but ran out of time. I would improve this section first.
-- I would add a more clever loading and background loading system so that the user needs to wait less.
-- I would add integration tests (although they weren't part of the requirement).
-- I would put more CSS in to styling in.
+- Testing: I would add integration tests (although they weren't part of the requirement) and fix the App component tests, as well as controller express file test
+- More CSS styling.
+- Abstract out some functionality from the express controller file (it's a bit big)
 
-## CHANGE LOG
+## CHANGE LOG (BRANCHES)
 
-### v2-corrections branch
+### v1-original-submission
+- As submitted last week.
+
+### v2-corrections(merged to main)
 - Encapsulation improvement: All class properties in the 3x classes (World, Continent, UrbanAreaData) are now made private, and getter methods added where needed.
 - React Controller component updated to read getter methods rather than class properties.
 
-- Move api fetch action from client-side to server-side, by creating an express-node backend.
+### v3-client-only(merged to main)
 
-- Import classes as typescript files.
+- Move api fetch action from client-side to server-side, by creating an express-node backend (new repo)
 - Move 'controller' to server-side
-- Update react components to just fetch data once(per continent) from the server.
-- Update scripts to run server and frontend simultaneously
-- Update test script to include coverage.
-- Add/fix any tests to achieve 100% coverage.
+- As only 2 routes with 3 or 4 functions required, took the decision to make a single controller file to handle server and all routes rather than a more extensive file tree.
+- Update react components to just fetch data once from the server on initial load, and then once each time a continent is selected.
+- Update server class files so as not to continue adding to data lists on repeated GET requests
+- Use of arrays in controller file to act as sort of semi-persistent data, meaning repeated and unneccesary fetch api calls were not made to teleport.org.
+- Server will background load all continent data starting when first GET request comes in (on react app load), but contains functionality to priority load a specific continent's data on its own if the whole load hasn't finished before that continent is selected.
+- Note testing of App.js file is incomplete.
 
 
 
